@@ -12,6 +12,7 @@ namespace WiredBrainCoffeeSurveys.Reports
             //Calculated values
             double responseRate = Q1Results.NumberResponded / Q1Results.NumberSurveyed;
             double unansweredCount = Q1Results.NumberSurveyed - Q1Results.NumberResponded;
+            double overallScore = (Q1Results.ServiceScore + Q1Results.CoffeeScore + Q1Results.FoodScore + Q1Results.PriceScore) / 4;
 
             //Logical comparisons
             bool isCoffeeScoreLower = Q1Results.CoffeeScore < Q1Results.FoodScore;
@@ -21,6 +22,15 @@ namespace WiredBrainCoffeeSurveys.Reports
                 return;
             }
             tasks.Add("Investigate coffee recipes and ingredients.");
+
+            if (overallScore > 8)
+            {
+                tasks.Add("Work with leadership to reward staff");
+            }
+            else
+            {
+                tasks.Add("Work with employees for improvement ideas");
+            }
         }
     }
 }
